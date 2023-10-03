@@ -119,23 +119,22 @@ namespace Classes
             {
                 return 2 * _pi * _radius;
             }
-            // Creating a class for triangle
-            public class Triangle
+        }   // Creating a class for triangle
+        public class Triangle
+        {
+            // Creating variables for the triangle base and triangle height.
+            public float _triangleBase;
+            public float _triangleHeight;
+            // Constructor that gets value from user inputs
+            public Triangle(float triangleBase, float triangleHeight)
             {
-                // Creating variables for the triangle base and triangle height.
-                public float _triangleBase;
-                public float _triangleHeight;
-                // Constructor that gets value from user inputs
-                public Triangle(float triangleBase, float triangleHeight)
-                {
-                    _triangleBase = triangleBase;
-                    _triangleHeight = triangleHeight;
-                }
-                // Creating a method that calculates the area of a triangle using triangleBase and triangleHeight.
-                public float getTriangleArea()
-                {
-                    return _triangleBase * _triangleHeight / 2;
-                }
+                _triangleBase = triangleBase;
+                _triangleHeight = triangleHeight;
+            }
+            // Creating a method that calculates the area of a triangle using triangleBase and triangleHeight.
+            public float getTriangleArea()
+            {
+                return _triangleBase * _triangleHeight / 2;
             }
         }
     }
