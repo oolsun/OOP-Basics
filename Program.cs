@@ -10,24 +10,22 @@ namespace Classes
         {
             // Welcomes user to the program
             Console.WriteLine("Välkommen!");
-            // Accessing the Circle class.
-            Circle circle = new Circle();
-            // Giving the variable radius in circle class the value 5.
-            circle.radius = 5;
+            // Creating first instance of the Circle class, set value to 5.
+            Circle circle1 = new Circle(5);
             // Printing out the area of a circle with the radius 5. Math.Round to only use two decimals in answer.
-            Console.WriteLine("Arean av en cirkel med 5 cm radie är " + Math.Round(circle.getArea(), 2) + " cm²");
+            Console.WriteLine("Arean av en cirkel med 5 cm radie är " + Math.Round(circle1.getArea(), 2) + " cm²");
             // Printing out the area and circumference of a sphere with the radius 5. Using only 2 decimals in answer.
-            Console.WriteLine("En sfär/boll med samma radie har arean " + Math.Round(circle.getSurfaceArea(), 2) + " cm2² och omkretsen " + Math.Round(circle.getCircumference(), 2) + "cm.");
-            // Giving the variable radius in circle class the value 6.
-            circle.radius = 6;
+            Console.WriteLine("En sfär/boll med samma radie har arean " + Math.Round(circle1.getSurfaceArea(), 2) + " cm2² och omkretsen " + Math.Round(circle1.getCircumference(), 2) + "cm.");
+            // Creating second instance of the Circle class, set value to 6.
+            Circle circle2 = new Circle(6);
             // Printing out the area of a circle with the radius 6. Math.Round to only use two decimals in answer.
-            Console.WriteLine("Arean av en cirkel med 6 cm radie är " + Math.Round(circle.getArea(), 2) + " cm²");
+            Console.WriteLine("Arean av en cirkel med 6 cm radie är " + Math.Round(circle2.getArea(), 2) + " cm²");
             // Printing out the area and circumference of a sphere with the radius 6. Using only 2 decimals in answer.
-            Console.WriteLine("En sfär/boll med samma radie har arean " + Math.Round(circle.getSurfaceArea(), 2) + " cm2² och omkretsen " + Math.Round(circle.getCircumference(), 2) + "cm.");
+            Console.WriteLine("En sfär/boll med samma radie har arean " + Math.Round(circle2.getSurfaceArea(), 2) + " cm2² och omkretsen " + Math.Round(circle2.getCircumference(), 2) + "cm.");
             // Asks the user to input a radius of a circle.
             Console.WriteLine("\nSkriv in radien i cm på en valfri cirkel så räknar jag ut arean åt dig");
             Console.WriteLine("(Decimaler separeras med kommatecken [,] och inte med punkt [.]!)\n");
-            // ASCII art of a circle to show what the radius is.
+            // ASCII art of a circle to show the user what the radius is.
             Console.WriteLine("    @@@@@@@@");
             Console.WriteLine("  @@        @@");
             Console.WriteLine(" @@          @@");
@@ -42,9 +40,11 @@ namespace Classes
                 {
                     // Takes input from user and prints the area of a circle with that input and also the area and circumference of a sphere.
                     Console.Write("Radien: ");
-                    circle.radius = float.Parse(Console.ReadLine());
-                    Console.WriteLine("Din cirkels area är: " + Math.Round(circle.getArea(), 2) + " cm²");
-                    Console.WriteLine("En sfär/boll med samma radie har arean " + Math.Round(circle.getSurfaceArea(), 2) + " cm2² och omkretsen " + Math.Round(circle.getCircumference(), 2) + "cm.");
+                    float radiusInput = float.Parse(Console.ReadLine());
+                    // Creating third instance of the Circle class, set value to user input in 'radiusInput'.
+                    Circle circle3 = new Circle(radiusInput);
+                    Console.WriteLine("Din cirkels area är: " + Math.Round(circle3.getArea(), 2) + " cm²");
+                    Console.WriteLine("En sfär/boll med samma radie har arean " + Math.Round(circle3.getSurfaceArea(), 2) + " cm2² och omkretsen " + Math.Round(circle3.getCircumference(), 2) + "cm.");
                     break;
                 }
                 catch
@@ -52,15 +52,17 @@ namespace Classes
                     // If user does an input wrong, showing an error message and give the user a new chance.
                     Console.WriteLine("Något blev fel. Kom ihåg att bara siffror och kommatecken är godkända (ex. 2,5). Prova igen!");
                 }
-            // Accessing triangle class.
-            Triangle triangle = new Triangle();
+            // Pause the program and clean the console for design and user experience purpose.
+            Console.WriteLine("\nTryck på valfri tangent för att gå vidare...");
+            Console.ReadKey();
+            Console.Clear();
             // Unicode to show the "up arrow" used in ASCII art of triangle.
             Console.OutputEncoding = System.Text.Encoding.Unicode;
             // Asks the user to input the base and height of triangle.
-            Console.WriteLine("\nJag kan även räkna ut arean på trianglar. Vänligen fyll i basen och höjden på triangeln du vill räkna ut.");
+            Console.WriteLine("Jag kan även räkna ut arean på trianglar. Vänligen fyll i basen och höjden på triangeln du vill räkna ut.");
             Console.WriteLine("(Decimaler separeras med kommatecken [,] och inte med punkt [.]!)\n");
-            // ASCII art to show what the base and height of a triangle is.
-            Console.WriteLine("      /\\      ʌ");
+            // ASCII art to show the user what the base and height of a triangle is.
+            Console.WriteLine("      /\\      ʌ"); //<--- This one needed unicode to show correctly.
             Console.WriteLine("     /  \\     |");
             Console.WriteLine("    /    \\    |");
             Console.WriteLine("   /      \\ HÖJDEN");
@@ -74,10 +76,12 @@ namespace Classes
                 {
                     // Takes input from user and prints the area of a triangle.
                     Console.Write("Basen: ");
-                    triangle.triangleBase = float.Parse(Console.ReadLine());
+                    float triangleBaseInput = float.Parse(Console.ReadLine());
                     Console.Write("Höjden: ");
-                    triangle.triangleHeight = float.Parse(Console.ReadLine());
-                    Console.WriteLine("Triangelns area är: " + Math.Round(triangle.getTriangleArea(), 2) + "cm²");
+                    float triangleHeightInput = float.Parse(Console.ReadLine());
+                    // Creating triangle instance that takes user inputs as values.
+                    Triangle triangle1 = new Triangle(triangleBaseInput, triangleHeightInput);
+                    Console.WriteLine("Triangelns area är: " + Math.Round(triangle1.getTriangleArea(), 2) + "cm²");
                     break;
                 }
                 catch
@@ -93,33 +97,44 @@ namespace Classes
         public class Circle
         {
             // Creating new variables for pi and radius.
-            float pi = 3.141f;
-            public float radius;
+            float _pi = 3.141f;
+            public float _radius;
+            // Constructor that gets value from user inputs
+            public Circle(float radius)
+            {
+                _radius = radius;
+            }
             // Creating a method that calculates area from pi and radius on a circle.
             public float getArea()
             {
-                return pi * radius * radius;
+                return _pi * _radius * _radius;
             }
             // Creating a method that calculates the area of a sphere by using pi and radius.
             public float getSurfaceArea()
             {
-                return 4 * pi * radius * radius;
+                return 4 * _pi * _radius * _radius;
             }
-            // Creating a methos that calculates the circumference of a sphere by using pi and radius.
+            // Creating a method that calculates the circumference of a sphere by using pi and radius.
             public float getCircumference()
             {
-                return 2 * pi * radius;
+                return 2 * _pi * _radius;
             }
             // Creating a class for triangle
             public class Triangle
             {
                 // Creating variables for the triangle base and triangle height.
-                public float triangleBase;
-                public float triangleHeight;
+                public float _triangleBase;
+                public float _triangleHeight;
+                // Constructor that gets value from user inputs
+                public Triangle(float triangleBase, float triangleHeight)
+                {
+                    _triangleBase = triangleBase;
+                    _triangleHeight = triangleHeight;
+                }
                 // Creating a method that calculates the area of a triangle using triangleBase and triangleHeight.
                 public float getTriangleArea()
                 {
-                    return triangleBase * triangleHeight / 2;
+                    return _triangleBase * _triangleHeight / 2;
                 }
             }
         }
