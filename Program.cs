@@ -119,7 +119,8 @@ namespace Classes
             {
                 return 2 * _pi * _radius;
             }
-        }   // Creating a class for triangle
+        }   
+        // Creating a class for triangle
         public class Triangle
         {
             // Creating variables for the triangle base and triangle height.
