@@ -14,7 +14,6 @@ namespace Classes
             // Creating first and second instance of the Circle class, set value to 5 and 6.
             Circle circle1 = new Circle(5);
             Circle circle2 = new Circle(6);
-            
             // Printing out the area of a circle with the radius 5.
             circle1.GetCircleArea();
             // Printing out the area and circumference of a sphere with the radius 5.
@@ -30,6 +29,7 @@ namespace Classes
             // Asks the user to input a radius of a circle.
             Console.WriteLine("\nSkriv in radien i cm på en valfri cirkel så räknar jag ut arean åt dig");
             Console.WriteLine("(Decimaler separeras med kommatecken [,] och inte med punkt [.]!)\n");
+
             // ASCII art of a circle to show the user what the radius is.
             Console.WriteLine("    @@@@@@@@");
             Console.WriteLine("  @@        @@");
@@ -55,6 +55,7 @@ namespace Classes
                     circle3.GetSurfaceArea();
                     // Printing out the volume of a sphere with the user input radius.
                     circle3.GetCircleVolume();
+                    // Break out of loop.
                     break;
                 }
                 catch
@@ -67,11 +68,13 @@ namespace Classes
             Console.WriteLine("\nTryck på valfri tangent för att gå vidare...");
             Console.ReadKey();
             Console.Clear();
+
             // Unicode to show the "up arrow" used in ASCII art of triangle.
             Console.OutputEncoding = System.Text.Encoding.Unicode;
             // Asks the user to input the base and height of triangle.
             Console.WriteLine("Jag kan även räkna ut arean på trianglar. Vänligen fyll i basen och höjden på triangeln du vill räkna ut.");
             Console.WriteLine("(Decimaler separeras med kommatecken [,] och inte med punkt [.]!)\n");
+
             // ASCII art to show the user what the base and height of a triangle is.
             Console.WriteLine("      /\\      ʌ"); //<--- This one needed unicode to show correctly.
             Console.WriteLine("     /  \\     |");
@@ -93,7 +96,9 @@ namespace Classes
                     float triangleHeightInput = float.Parse(Console.ReadLine());
                     // Creating triangle instance that takes user inputs as values.
                     Triangle triangle1 = new Triangle(triangleBaseInput, triangleHeightInput);
+                    // Printing out the area of a triangle with the user input.
                     triangle1.GetTriangleArea();
+                    // Break out of loop.
                     break;
                 }
                 catch
