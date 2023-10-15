@@ -20,6 +20,8 @@ namespace Classes
             circle1.GetSurfaceArea();
             // Printing out the volume of a sphere with the radius 5.
             circle1.GetCircleVolume();
+            // New line for design purpose
+            Console.WriteLine();
             // Printing out the area of a circle with the radius 6.
             circle2.GetCircleArea();
             // Printing out the area and circumference of a sphere with the radius 6.

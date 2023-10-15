@@ -27,13 +27,13 @@ namespace OOP_Basics
         {
             float surfaceArea = 4 * _pi * _radius * _radius;
             float circumference = 2 * _pi * _radius;
-            Console.WriteLine("En sfär/boll med samma radie har arean " + Math.Round(surfaceArea, 2) + " cm2² och omkretsen " + Math.Round(circumference, 2) + "cm.");
+            Console.WriteLine("En sfär/boll med " + _radius + " cm radie har arean " + Math.Round(surfaceArea, 2) + " cm2² och omkretsen " + Math.Round(circumference, 2) + "cm.");
         }
         // Creating a mehod that calculates the volume of a sphere by using pi and radius. Using only 2 decimals. Then returns a text with the calculations.
         public void GetCircleVolume()
         {
             float volume = 4f / 3f * _pi * _radius * _radius * _radius;
-            Console.WriteLine("Volymen är " + Math.Round(volume, 2) + " cm³.");
+            Console.WriteLine("Volymen på en sfär/boll med radien " + _radius + "är " + Math.Round(volume, 2) + " cm³.");
         }
     }
 }
